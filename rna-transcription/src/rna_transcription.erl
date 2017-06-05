@@ -3,9 +3,10 @@
 
 test_version() -> 1.
 
-to_rna("")  ->  [];
-to_rna("G") -> "C";
-to_rna("C") -> "G";
-to_rna("T") -> "A";
-to_rna("A") -> "U";
-to_rna([H|T]) -> to_rna([H]) ++ to_rna(T).
+to_r($G) -> $C;
+to_r($C) -> $G;
+to_r($T) -> $A;
+to_r($A) -> $U.
+
+to_rna([]) -> [];
+to_rna([H|T]) -> [to_r(H)|to_rna(T)].
