@@ -3,14 +3,14 @@
 
 test_version() -> 1.
 
-ageOn(_earth, Seconds) -> Seconds/365.25.
+-define(SIEY, 31557600). % SECONDS_IN_EARTH_YEAR
+-define(SIPY, #{ earth  =>   1.00000000 * ?SIEY,
+                mercury =>   0.24084670 * ?SIEY,
+                venus   =>   0.61519726 * ?SIEY,
+                mars    =>   1.88081580 * ?SIEY,
+                jupiter =>  11.86261500 * ?SIEY,
+                saturn  =>  29.44749800 * ?SIEY,
+                uranus  =>  84.01684600 * ?SIEY,
+                neptune => 164.79132000 * ?SIEY}).
 
-
-   %- Earth: orbital period 365.25 Earth days, or 31557600 seconds
-   %- Mercury: orbital period 0.2408467 Earth years
-   %- Venus: orbital period 0.61519726 Earth years
-   %- Mars: orbital period 1.8808158 Earth years
-   %- Jupiter: orbital period 11.862615 Earth years
-   %- Saturn: orbital period 29.447498 Earth years
-   %- Uranus: orbital period 84.016846 Earth years
-   %- Neptune: orbital period 164.79132 Earth years
+ageOn(P, S) -> S / maps:get(P, ?SIPY).
