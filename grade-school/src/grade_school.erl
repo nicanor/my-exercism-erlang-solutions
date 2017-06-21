@@ -9,4 +9,4 @@ sort(School)       -> maps:to_list(School).
 
 add(Student, Grade, School) ->
   NewList = lists:sort([Student|get(Grade, School)]),
-  maps:put(Grade, NewList, School).
+  School#{Grade => NewList}.
